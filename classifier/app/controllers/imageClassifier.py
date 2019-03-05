@@ -10,13 +10,22 @@ class ImageClassifier(Resource):
 
     def post(self):
         parser = reqparse.RequestParser()
-        parser.add_argument('imageUrl', type=str,
+        parser.add_argument('location', type=str,
                             help="imageUrl must be provided")
+        parser.add_argument('isUrl', type=bool,
+                            help="isUrl must be provided")
         args = parser.parse_args()
 
         fc = FoodClassifier(Classifier.MODEL_PATH.value,
                             Classifier.LABEL_PATH.value)
-        result = fc.classify(args.imageUrl, isUrl=True)
+        if(not args.isUrl):
+            # TOOD: Make location an environment variable
+            location = "/usr/src/app/uploads/"+args.location
+        else:
+            location = args.location
+        print(location)
+        result = fc.classify(location, isUrl=args.isUrl)
+        print(result)
         return {
             "result": result
         }

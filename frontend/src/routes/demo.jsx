@@ -1,14 +1,14 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 // core components/views for Admin layout
-import DashboardPage from "views/Dashboard/Dashboard.jsx";
+import Classifier from "views/Classifier/Classifier.jsx";
 
 const demoRouter = prefix => [
   {
-    path: `${prefix}`,
-    name: "Dashboard",
+    path: `${prefix}/classifier`,
+    name: "Classifier",
     icon: Dashboard,
-    component: DashboardPage
+    component: Classifier
   }
 ];
 
