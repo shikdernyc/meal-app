@@ -83,11 +83,11 @@ class FoodClassifier:
 
         top_k = results.argsort()[-5:][::-1]
         labels = load_labels(self.label_file)
-        template = "{} (score={:0.5f})"
+        # template = "{} (score={:0.5f})"
         output = []
         for i in top_k:
             # print(template.format(labels[i], results[i]))
             # output.append(template.format(labels[i], results[i]))
-            entry = {'prediction': labels[i], 'result': "{:0.5f}".format(results[i])}
+            entry = {'prediction': labels[i], 'score': "{:0.5f}".format(results[i])}
             output.append(entry)
         return output
