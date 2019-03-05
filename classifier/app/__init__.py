@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_restful import Api
-from flask_sqlalchemy import SQLAlchemy
 import os
 
 from .controllers.imageClassifier import ImageClassifier
@@ -17,8 +16,6 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///static/db/test.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
-    db = SQLAlchemy(app)
 
     # routes
     api.add_resource(ImageClassifier, '/api/classify')
