@@ -4,7 +4,7 @@ let router = require('./routes');
 const errorHandler = require('./handlers/error');
 
 let app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8082;
 
 app.use(
   bodyParser.urlencoded({
@@ -15,6 +15,6 @@ app.use(
 app.use(bodyParser.json());
 app.use(router);
 app.use(errorHandler);
-app.listen(8000, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
