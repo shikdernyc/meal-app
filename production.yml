@@ -1,0 +1,22 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - 3000:3000
+    depends_on:
+      - api
+
+  classifier:
+    build: ./classifier
+    volumes:
+      - ./backend/uploads:/usr/src/app/uploads
+    ports:
+      - 8084:8084
+
+  api:
+    build: ./backend
+    ports:
+      - 8082:8082
+    depends_on:
+      - classifier
