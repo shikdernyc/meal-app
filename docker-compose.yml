@@ -13,6 +13,7 @@ services:
     build: ./classifier
     volumes:
       - ./classifier:/usr/src/app
+      - ./backend/uploads:/usr/src/app/uploads
     ports:
       - 8084:8084
 
