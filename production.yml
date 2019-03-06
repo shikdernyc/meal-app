@@ -5,16 +5,9 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - api
+      - backend
 
-  classifier:
-    build: ./classifier
-    volumes:
-      - ./backend/uploads:/usr/src/app/uploads
-    ports:
-      - 8084:8084
-
-  api:
+  backend:
     build: ./backend
     ports:
       - 8082:8082
