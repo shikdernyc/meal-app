@@ -18,22 +18,17 @@ def load_graph(model_file):
 
     return graph
 
-def read_tensor_from_url(url, input_height=299, input_width=299, input_mean=0, input_std=255):
-    content = requests.get(url).content
-
-def read_tensor_from_image_file(image_location, isUrl=False, input_height=299, input_width=299,
+def read_tensor_from_image_file(content, filetype, isUrl=False, is_content=False, input_height=299, input_width=299,
                                 input_mean=0, input_std=255):
-    input_name = "file_reader"
     output_name = "normalized"
-    content = requests.get(image_location).content if isUrl else tf.read_file(image_location, input_name)
 
-    if image_location.endswith(".png"):
+    if filetype == "png":
         image_reader = tf.image.decode_png(content, channels=3,
                                            name='png_reader')
-    elif image_location.endswith(".gif"):
+    elif filetype == "gif":
         image_reader = tf.squeeze(tf.image.decode_gif(content,
                                                       name='gif_reader'))
-    elif image_location.endswith(".bmp"):
+    elif filetype == "bmp":
         image_reader = tf.image.decode_bmp(content, name='bmp_reader')
     else:
         image_reader = tf.image.decode_jpeg(content, channels=3,
@@ -62,10 +57,16 @@ class FoodClassifier:
         self.model_file = model_path
         self.label_file = label_path
 
-    def classify(self, image_path, isUrl=False, input_height=224, input_width = 224, input_mean = 128, input_std = 128, input_layer = "input", output_layer = "final_result" ):
+    def classify(self, image, image_type, is_url=False, is_content=False, input_height=224, input_width = 224, input_mean = 128, input_std = 128, input_layer = "input", output_layer = "final_result" ):
+        if(is_content):
+            content= image
+        else: 
+            content = requests.get(image).content if is_url else tf.read_file(image, "file_reader")
+
         graph = load_graph(self.model_file)
-        t = read_tensor_from_image_file(image_path,
-            isUrl=isUrl,
+        t = read_tensor_from_image_file(
+            content,
+            image_type,
             input_height=input_height,
             input_width=input_width,
             input_mean=input_mean,
