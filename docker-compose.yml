@@ -15,5 +15,3 @@ services:
       - ./backend:/usr/src/app
     ports:
       - 8082:8082
-    depends_on:
-      - classifier
