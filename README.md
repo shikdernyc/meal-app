@@ -33,5 +33,4 @@ Before you start, make sure you have node installed
 
 1. navigate to frontend
 2. installing dependencies: `npm install`
-3. change backend proxy to: `http://localhost:8082`
-4. start backend server: `npm start`
+3. start backend server: `npm start`
