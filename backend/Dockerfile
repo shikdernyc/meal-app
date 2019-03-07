@@ -6,4 +6,4 @@ COPY requirements.txt /usr/src/app
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /usr/src/app
 CMD ["python3", "setup.py"]
-EXPOSE 8084
+EXPOSE 8082
