@@ -1,8 +1,8 @@
 from flask_restful import Resource, reqparse
-from app.tf.classifier import FoodClassifier
-from flask import jsonify, current_app
+from app.handlers.classifier import FoodClassifier
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
+from constants import MODEL_PATH, LABEL_PATH
 import os
 
 
@@ -17,8 +17,8 @@ class ImageClassifier(Resource):
         parser.add_argument('image', type=FileStorage, location='files',
                             help="location must be provided")
         args = parser.parse_args()
-        fc = FoodClassifier(current_app.config['MODEL_PATH'],
-                            current_app.config['LABEL_PATH'])
+        fc = FoodClassifier(MODEL_PATH,
+                            LABEL_PATH)
         file = args.image
         content = file.stream.read()
         filetype = get_file_type(file.filename)
