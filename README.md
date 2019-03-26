@@ -2,19 +2,19 @@
 
 ## Quickstart
 
-### With Docker and Docker Compose
+## With Docker and Docker Compose
 
 ## For development:
 
 1. Navigate to app root directory
 2. Run `docker-compose up`
 
-## For production
+### For production
 
 1. Navigate to app root directory
 2. Run `docker-compose -f production.yml --build`
 
-#### Without Docker
+## Without Docker
 
 ### Backend
 
