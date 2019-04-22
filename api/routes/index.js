@@ -1,5 +1,6 @@
 const Router = require('express').Router();
 
-Router.use('/auth', require('./auth'));
+Router.use('/', require("./root"))
+Router.use('/food', require("./food"))
 
 module.exports = Router;
