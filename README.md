@@ -2,30 +2,16 @@
 
 ## Quickstart
 
-## With Docker and Docker Compose
-
-## For development:
-
-1. Navigate to app root directory
-2. Run `docker-compose up`
-
-### For production
-
-1. Navigate to app root directory
-2. Run `docker-compose -f production.yml --build`
-
-## Without Docker
-
 ### Backend
 
 Before you start, make sure you have python 3.6 installed
 
 1. navigate to backend folder
 2. install virtualenv: `sudo pip3 install virtualenv`
-3. create virtual environment: `virtualenv venv`
+3. create virtual environment: `virtualenv -p python3 venv`
 4. access virtual environment: `source venv/bin/activate`
 5. install project requirements: `pip3 install -r requirements.txt`
-6. start backend server: `python3 setup`
+6. start backend server: `python run.py`
 
 ### Frontend
 
