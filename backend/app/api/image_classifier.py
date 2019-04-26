@@ -10,7 +10,7 @@ def get_file_type(file_name):
     return file_name[file_name.rindex('.')+1:]
 
 
-class ImageClassifier(Resource):
+class ImageClassifierRes(Resource):
     def post(self):
         # ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
         parser = reqparse.RequestParser()
