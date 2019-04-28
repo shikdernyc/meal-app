@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from ..models.User import User
+from ..models.user import User
 
 
 class UserRes(Resource):
