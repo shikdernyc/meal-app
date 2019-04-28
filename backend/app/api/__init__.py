@@ -11,5 +11,5 @@ CORS(api_bp)
 api = Api(api_bp)
 
 api.add_resource(ImageClassifierRes, '/classify')
-api.add_resource(UserRes, '/user')
+api.add_resource(UserRes, '/signup')
 api.add_resource(RootRes, '/')
